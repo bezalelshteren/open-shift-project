@@ -9,5 +9,25 @@ deployment.apps/mysql-deployment created
 PS C:\Users\User> oc apply -f "C:\Users\User\Downloads\1קובץ יאמל.yaml"
 service/mysql-service unchanged
 
+mysql -u root -p'cGFzc3dvcmQ=' < commundsSQL.sql
+
+CREATE DATABASE testdb;
+USE testdb;
+
+CREATE TABLE users (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    FirstName VARCHAR(255),
+    LastName VARCHAR(255)
+);
+
+INSERT INTO users (FirstName,
+    LastName) VALUES
+('Betsalel', 'shteren'),
+('shlomo','wind');
+
+
 docker build -t  server_sql .
+
+
+
 
