@@ -1,0 +1,13 @@
+PS C:\Users\User> oc apply -f "C:\Users\User\Downloads\1קובץ יאמל.yaml"
+service/mysql-service created
+PS C:\Users\User> oc apply -f "C:\Users\User\Downloads\1קובץ יאמל.yaml"
+service/mysql-service unchanged
+PS C:\Users\User> oc apply -f "C:\Users\User\Downloads\1קובץ יאמל.yaml"
+persistentvolumeclaim/mysql-pvc created
+PS C:\Users\User> oc apply -f "C:\Users\User\Downloads\1קובץ יאמל.yaml"
+deployment.apps/mysql-deployment created
+PS C:\Users\User> oc apply -f "C:\Users\User\Downloads\1קובץ יאמל.yaml"
+service/mysql-service unchanged
+
+docker build -t  server_sql .
+

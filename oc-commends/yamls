@@ -1,4 +1,16 @@
 
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysql-secret
+type: Opaque
+data:
+  mysql-root-password: cGFzc3dvcmQ=
+  mysql-user: dXNlcg==
+  mysql-password: cGFzc3dvcmQ=
+
+
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -65,7 +77,7 @@ spec:
   ports:
     - port: 3306
       targetPort: 3306
-  clusterIP: None # StatefulSet-like behavior
+  clusterIP: None
 
 
 
