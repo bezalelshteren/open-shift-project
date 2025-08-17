@@ -2,34 +2,28 @@ from fastapi import FastAPI
 import uvicorn
 import mysql.connector
 
-
 """
 Connects to a SQL database using pyodbc
 """
 
-
 app = FastAPI()
 
-
 @app.get("/get_from_sql")
-def predict_all(request):
+def get_airplanes():
     mydb = mysql.connector.connect(
-        host="mysql-app",
-        user="bezalel",
-        password="1234"
+        host="mysql-service",
+        user="root",
+        password="1234",
+        database="testdb"
     )
     cursor = mydb.cursor()
-    query = 'SELECT plane_id, plane, max_weight FROM airplanes'
+    query = "SELECT * FROM users;"
     cursor.execute(query)
     result = cursor.fetchall()
-    print(result)
-
-    print(mydb)
     cursor.close()
     mydb.close()
-
-    return result.json()
+    return result
 
 
 if __name__ == '__main__':
-    uvicorn.run(app, host="mysql", port=8004)
+    uvicorn.run(app, host="0.0.0.0", port=8004)

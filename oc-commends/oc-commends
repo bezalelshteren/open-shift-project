@@ -9,7 +9,9 @@ deployment.apps/mysql-deployment created
 PS C:\Users\User> oc apply -f "C:\Users\User\Downloads\1קובץ יאמל.yaml"
 service/mysql-service unchanged
 
-mysql -u root -p'cGFzc3dvcmQ=' < commundsSQL.sql
+oc rsh the pod name
+
+mysql -u root -p'1234'
 
 CREATE DATABASE testdb;
 USE testdb;
@@ -26,8 +28,14 @@ INSERT INTO users (FirstName,
 ('shlomo','wind');
 
 
-docker build -t  server_sql .
+docker build -t bezalelshteren/sqlserver:1.0 .
 
+docker push bezalelshteren/sqlserver:1.0
 
+oc create deployment sqlserver-deployment --image=docker.io/bezalelshteren/sqlserver:1.0
 
+oc expose deployment sqlserver-deployment --port=8004 --name=sqlserver-service
 
+oc expose svc/sqlserver-service --name=sqlserver-route
+
+oc get route sqlserver-route
