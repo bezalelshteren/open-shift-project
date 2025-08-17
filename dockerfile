@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 8004
 
-CMD ["uvicorn", "service_to_sql:app", "--host", "0.0.0.0", "--port","8001"]
+CMD ["uvicorn", "service_to_sql:app", "--host", "0.0.0.0", "--port","8004"]
